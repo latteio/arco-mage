@@ -1,2 +1,0 @@
-# arco-mage
-arco-mage
