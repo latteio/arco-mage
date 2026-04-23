@@ -5,15 +5,8 @@
 </template>
 
 <script lang="ts" setup>
-import {onMounted} from 'vue';
-
-/**
- * 设置主题
- */
-onMounted(() => {
-});
 </script>
 
-<style lang="scss">
+<style lang="less">
 
 </style>

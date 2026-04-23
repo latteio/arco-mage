@@ -8,46 +8,21 @@
           :style="{ width: '100%' }"
           @menu-item-click="onClickMenuItem"
       >
-        <a-menu-item key="0_1" disabled>
-          <IconHome></IconHome>
-          Menu 1
-        </a-menu-item>
-        <a-menu-item key="0_2">
-          <IconCalendar></IconCalendar>
-          Menu 2
-        </a-menu-item>
-        <a-menu-item key="0_3">
-          <IconCalendar></IconCalendar>
-          Menu 3
-        </a-menu-item>
-        <a-sub-menu key="1">
+        <a-sub-menu v-for="mg in menus"
+                    :key="mg.path"
+        >
           <template #title>
-            <IconCalendar></IconCalendar>
-            Navigation 1
+            <IconHome></IconHome>
+            <span>{{ mg.meta?.title }}</span>
           </template>
-          <a-menu-item key="1_1">Menu 1</a-menu-item>
-          <a-menu-item key="1_2">Menu 2</a-menu-item>
-          <a-sub-menu key="2" title="Navigation 2">
-            <a-menu-item key="2_1">Menu 1</a-menu-item>
-            <a-menu-item key="2_2">Menu 2</a-menu-item>
-          </a-sub-menu>
-          <a-sub-menu key="3" title="Navigation 3">
-            <a-menu-item key="3_1">Menu 1</a-menu-item>
-            <a-menu-item key="3_2">Menu 2</a-menu-item>
-            <a-menu-item key="3_3">Menu 3</a-menu-item>
-          </a-sub-menu>
-        </a-sub-menu>
-        <a-sub-menu key="4">
-          <template #title>
-            <IconCalendar></IconCalendar>
-            Navigation 4
-          </template>
-          <a-menu-item key="4_1">Menu 1</a-menu-item>
-          <a-menu-item key="4_2">Menu 2</a-menu-item>
-          <a-menu-item key="4_3">Menu 3</a-menu-item>
+
+          <a-menu-item v-for="m in mg.children"
+                       :key="m.path"
+          >
+            {{ m.meta?.title }}
+          </a-menu-item>
         </a-sub-menu>
       </a-menu>
-      <!-- trigger -->
       <template #trigger="{ collapsed }">
         <IconCaretRight v-if="collapsed"></IconCaretRight>
         <IconCaretLeft v-else></IconCaretLeft>
@@ -57,40 +32,44 @@
       <a-layout-header style="padding-left: 20px;">
         Header
       </a-layout-header>
+
       <a-layout style="padding: 0 24px;">
         <a-breadcrumb :style="{ margin: '16px 0' }">
           <a-breadcrumb-item>Home</a-breadcrumb-item>
-          <a-breadcrumb-item>List</a-breadcrumb-item>
-          <a-breadcrumb-item>App</a-breadcrumb-item>
+          <!-- <a-breadcrumb-item>List</a-breadcrumb-item> -->
+          <!-- <a-breadcrumb-item>App</a-breadcrumb-item> -->
         </a-breadcrumb>
-        <a-layout-content>Content</a-layout-content>
-        <a-layout-footer>Footer</a-layout-footer>
+
+        <a-layout-content>
+          <router-view></router-view>
+        </a-layout-content>
+        <a-layout-footer>@Copyright www.xxx.com</a-layout-footer>
       </a-layout>
     </a-layout>
   </a-layout>
 </template>
-<script>
-import {defineComponent} from 'vue';
-import {Message} from '@arco-design/web-vue';
-import {IconCalendar, IconCaretLeft, IconCaretRight, IconHome,} from '@arco-design/web-vue/es/icon';
 
-export default defineComponent({
-  components: {
-    IconCaretRight,
-    IconCaretLeft,
-    IconHome,
-    IconCalendar,
-  },
-  methods: {
-    onClickMenuItem(key) {
-      Message.info({content: `You select ${key}`, showIcon: true});
-    }
-  }
-});
+<script lang="ts" setup>
+import {computed, ref} from 'vue';
+import routes from '@/routes'
+import router from "@/router";
+
+const menus = computed(() => {
+  return routes[0].children;
+})
+
+const activeMenu = ref('/dashboard')
+const onClickMenuItem = (index: string) => {
+  console.log('index===', index)
+  activeMenu.value = index
+  router.push(index)
+}
+
 </script>
+
 <style scoped>
 .layout-demo {
-  height: 500px;
+  height: 1320px;
   background: var(--color-fill-2);
   border: 1px solid var(--color-border);
 }
@@ -131,7 +110,7 @@ export default defineComponent({
   display: flex;
   flex-direction: column;
   justify-content: center;
-  color: var(--color-white);
+  color: var(--color-black);
   font-size: 16px;
   font-stretch: condensed;
   text-align: center;

@@ -1,15 +1,15 @@
 /**
  *   对话框的基础封装:
- *   1.
- *   2.
+ *   1. 标题
+ *   2. 默认宽度, 高度(统一)
  *   @author: wugz
  *   @since : 2025/12/13
  */
 import {defineComponent} from "vue";
 import {Modal} from "@arco-design/web-vue";
 
-const DialogBox = defineComponent({
-  name: "DialogBox",
+const MagDialogBox = defineComponent({
+  name: "MagDialogBox",
   props: {
     /* 对话框自定义属性: 基础 */
     header: {type: String, required: false, default: "对话框标题"},
@@ -39,4 +39,4 @@ const DialogBox = defineComponent({
   }
 });
 
-export default DialogBox;
+export default MagDialogBox;

@@ -29,7 +29,8 @@ export default defineConfig(({mode}) => {
         compilerOptions: {
           declarationMap: false
         }
-      })],
+      })
+    ],
     resolve: {
       alias: {
         '@': fileURLToPath(new URL('./src', import.meta.url)),
@@ -68,7 +69,7 @@ export default defineConfig(({mode}) => {
     /* 服务代理 */
     server: {
       host: '0.0.0.0',
-      port: 8000,
+      port: 9090,
       cors: true,
       hmr: true,
       proxy: {

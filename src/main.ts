@@ -3,7 +3,7 @@ import {createApp} from 'vue';
 import ArcoVue from '@arco-design/web-vue';
 import ArcoVueIcon from '@arco-design/web-vue/es/icon';
 import ArcoMage from '@/components';
-import router from '@/routes';
+import router from '@/router';
 import App from '@/App.vue';
 
 const app = createApp(App);
