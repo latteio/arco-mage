@@ -41,7 +41,9 @@
         </a-breadcrumb>
 
         <a-layout-content>
-          <router-view></router-view>
+          <div class="main-content">
+            <router-view></router-view>
+          </div>
         </a-layout-content>
         <a-layout-footer>@Copyright www.xxx.com</a-layout-footer>
       </a-layout>
@@ -114,5 +116,13 @@ const onClickMenuItem = (index: string) => {
   font-size: 16px;
   font-stretch: condensed;
   text-align: center;
+}
+
+.main-content {
+  display: flex;
+  flex-direction: row;
+  flex: 1;
+  width: 100%;
+  height: 100%;
 }
 </style>

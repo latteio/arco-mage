@@ -7,7 +7,8 @@
         :row-columns="rowColumns"
         :row-selection="rowSelection"
         @selection-change="handleSelectionChange"
-        :data-loader="() => {}"
+        :data="[]"
+        :auto-load="false"
         @filter-query="filterQuery"
     >
       <template #op="{ record }">
