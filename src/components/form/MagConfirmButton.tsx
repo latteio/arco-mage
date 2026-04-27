@@ -22,7 +22,7 @@ const MagConfirmButton = defineComponent({
      * 按钮时间
      * @param event
      */
-    const onClickFunc = async (event) => {
+    const onClickFunc = async (event: any) => {
       event && event.stopPropagation();
       if (loadingStatus.value) return;
       loadingStatus.value = true;

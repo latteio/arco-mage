@@ -22,7 +22,7 @@ const MagTableCard = defineComponent({
     /* 表格自定义属性: 数据 */
     rowData: {type: Array, required: false, default: () => []},
     rowTotal: {type: Number, required: false, default: () => 0},
-    dataLoader: {type: Function, required: false, default: (data) => data},
+    dataLoader: {type: Function, required: false, default: (data: any) => data},
     dataParams: {type: Object, required: false, default: () => null},
     autoLoad: {type: Boolean, required: false, default: () => true},
     /* 表格自定义属性: 分页 */
@@ -32,13 +32,13 @@ const MagTableCard = defineComponent({
   emits: ["filter-query"],
   setup: function (props, {attrs, slots, emit, expose}) {
     const loadingStatus = ref(false);
-    const filterValues = reactive({});
+    const filterValues = reactive<any>({});
 
     /**
      * 定义表格内置模型变量
      */
-    const tableModel = reactive({
-      data: [],
+    const tableModel = reactive<any>({
+      data: props?.rowData || [],
       total: 0,
       current: 1,
       size: 20,
@@ -142,7 +142,7 @@ const MagTableCard = defineComponent({
     /**
      * 定义表格分页事件
      */
-    const onTablePageChange = (val) => {
+    const onTablePageChange = (val: number) => {
       tableModel.current = val;
       loadDataAsyncFunc(tableModel.cachedQueryParams);
     }
@@ -150,7 +150,7 @@ const MagTableCard = defineComponent({
     /**
      * 定义表格切换分页条目事件
      */
-    const onTablePageSizeChange = (val) => {
+    const onTablePageSizeChange = (val: number) => {
       tableModel.current = 1;
       tableModel.size = val;
       loadDataAsyncFunc(tableModel.cachedQueryParams);
@@ -163,7 +163,7 @@ const MagTableCard = defineComponent({
      * @param val
      * @param fn
      */
-    const onMagTableFilterFn = (event, prop, val, fn) => {
+    const onMagTableFilterFn = (event: any, prop: string, val: any, fn: any) => {
       // 更新过滤值
       if (event === 'confirm' && prop && val !== undefined) {
         filterValues[prop] = val;
@@ -347,7 +347,7 @@ const MagTableCard = defineComponent({
         return props.height + "px";
       }
 
-      let relativeHeight = 170;
+      let relativeHeight = 180;
       if (props.header) {
         relativeHeight += 46;
       }
@@ -389,6 +389,7 @@ const MagTableCard = defineComponent({
               rowKey={props.rowKey}
               bordered={{headerCell: true}}
               scroll={{
+                x: 'auto',
                 y: calcTableHeight()
               }}
               pagination={false}

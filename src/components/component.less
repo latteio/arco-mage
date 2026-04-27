@@ -1,0 +1,143 @@
+/**
+ * 自定义组件: 缓存输入框样式
+ */
+.cacheable-input__cache-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-width: 200px;
+  height: 30px;
+  padding: 0 6px;
+  border-radius: 4px;
+}
+
+.cacheable-input__cache-item:hover {
+  cursor: pointer;
+  background-color: rgb(22, 93, 255);
+  color: white;
+}
+
+/**
+ * 自定义组件: 时间线样式
+ */
+.timeline-range__label {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 0 1.8rem;
+}
+
+.timeline-range__label-item {
+  font-size: 13px;
+  height: 1.8rem;
+  color: #6d7075;
+}
+
+/**
+ * 自定义组件: 表格样式
+ */
+.card-list {
+  display: flex;
+  flex-direction: row;
+  flex: 1;
+  gap: 6px;
+}
+
+.card-list__card {
+  width: 33%;
+  transition-property: all;
+  background-color: rgb(var(--arcoblue-9));
+  padding: 10px;
+}
+
+.card-list__card-header {
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: rgb(var(--arcoblue-4));
+}
+
+.card-list__card-body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 4px;
+  gap: 6px;
+}
+
+.card-list__card-content {
+  display: flex;
+  flex-direction: row;
+  flex: 1;
+  padding: 2px;
+  justify-content: flex-start;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+.card-list__card-content > .blue-dot {
+  width: 8px;
+  height: 8px;
+  background-color: rgb(var(--arcoblue-4));
+  align-items: flex-end !important;
+  margin-right: 4px;
+}
+
+.card-list__card-content > .card-list__card-content-label {
+  width: calc((100% - 12px) / 2);
+  justify-content: flex-end !important;
+}
+
+.card-list__card-content > .card-list__card-content-value {
+  width: calc((100% - 12px) / 2);
+  text-align: end;
+}
+
+/**
+ * 自定义组件: 表格样式
+ */
+.table-card__main {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+.table-card__main > .arco-card {
+  border-radius: 10px !important;
+}
+
+.table-card__table-buttons {
+  display: inline-flex;
+  align-items: center;
+  width: 100%;
+  height: 40px;
+  padding: 0 1px;
+}
+
+.table-card__table-filter {
+  padding: 20px;
+  background: var(--color-bg-5);
+  border: 1px solid var(--color-neutral-3);
+  border-radius: var(--border-radius-medium);
+  box-shadow: 0 2px 5px rgb(0 0 0 / 10%);
+}
+
+.table-card__table-filter-control {
+  width: 240px;
+  margin-bottom: 12px;
+}
+
+.table-card__table-filter-footer {
+  display: flex;
+  justify-content: space-between;
+}
+
+.table-card__table-pagination {
+  display: flex;
+  align-items: center;
+  height: 40px;
+  padding: 0 16px;
+  background-color: white;
+}

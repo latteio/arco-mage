@@ -111,7 +111,6 @@ const onClickMenuItem = (index: string) => {
 .layout-demo :deep(.arco-layout-content) {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   color: var(--color-black);
   font-size: 16px;
   font-stretch: condensed;

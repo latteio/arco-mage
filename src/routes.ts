@@ -32,12 +32,20 @@ const staticRoutes: RouteRecordRaw[] = [
         component: () => import('@/views/demos/Empty.vue'),
         meta: {type: 'menu-group', title: '开发实例'},
         children: [{
-          name: "crud",
-          path: "/crud",
-          component: () => import('@/views/demos/crud/index.vue'),
+          name: "table0",
+          path: "/table0",
+          component: () => import('@/views/demos/crud/table0.vue'),
           meta: {
             type: 'menu',
             title: '基础表格'
+          }
+        }, {
+          name: "table1",
+          path: "/table1",
+          component: () => import('@/views/demos/crud/table1.vue'),
+          meta: {
+            type: 'menu',
+            title: '组件化表格'
           }
         }]
       }
