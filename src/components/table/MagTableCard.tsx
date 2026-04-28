@@ -163,7 +163,7 @@ const MagTableCard = defineComponent({
      * @param val
      * @param fn
      */
-    const onMagTableFilterFn = (event: any, prop: string, val: any, fn: any) => {
+    const onTableFilterFn = (event: any, prop: string, val: any, fn: any) => {
       // 更新过滤值
       if (event === 'confirm' && prop && val !== undefined) {
         filterValues[prop] = val;
@@ -208,8 +208,8 @@ const MagTableCard = defineComponent({
           if (rowColumn["filterable"]["type"] === 'input') {
             columnSlots["filter-content"] = (scope: any) => {
               return <MagTableFilter
-                  onConfirm={() => onMagTableFilterFn('confirm', filterProp, currentFilterValue, scope.handleFilterConfirm)}
-                  onReset={() => onMagTableFilterFn('reset', filterProp, null, scope.handleFilterReset)}
+                  onConfirm={() => onTableFilterFn('confirm', filterProp, currentFilterValue, scope.handleFilterConfirm)}
+                  onReset={() => onTableFilterFn('reset', filterProp, null, scope.handleFilterReset)}
               >
                 <Input
                     modelValue={currentFilterValue}
@@ -223,7 +223,7 @@ const MagTableCard = defineComponent({
                     }}
                     onClear={() => {
                       filterValues[filterProp] = null;
-                      onMagTableFilterFn('reset', filterProp, null, scope.handleFilterReset);
+                      onTableFilterFn('reset', filterProp, null, scope.handleFilterReset);
                     }}>
                 </Input>
               </MagTableFilter>
@@ -234,8 +234,8 @@ const MagTableCard = defineComponent({
           if (rowColumn["filterable"]["type"] === 'select') {
             columnSlots["filter-content"] = (scope: any) => {
               return <MagTableFilter
-                  onConfirm={() => onMagTableFilterFn('confirm', filterProp, currentFilterValue, scope.handleFilterConfirm)}
-                  onReset={() => onMagTableFilterFn('reset', filterProp, null, scope.handleFilterReset)}
+                  onConfirm={() => onTableFilterFn('confirm', filterProp, currentFilterValue, scope.handleFilterConfirm)}
+                  onReset={() => onTableFilterFn('reset', filterProp, null, scope.handleFilterReset)}
               >
                 <Select
                     modelValue={currentFilterValue}
@@ -250,7 +250,7 @@ const MagTableCard = defineComponent({
                     }}
                     onClear={() => {
                       filterValues[filterProp] = null;
-                      onMagTableFilterFn('reset', filterProp, null, scope.handleFilterReset);
+                      onTableFilterFn('reset', filterProp, null, scope.handleFilterReset);
                     }}>
                 </Select>
               </MagTableFilter>
@@ -264,8 +264,8 @@ const MagTableCard = defineComponent({
               const dateRangeValue = currentFilterValue || [];
 
               return <MagTableFilter
-                  onConfirm={() => onMagTableFilterFn('confirm', filterProp, currentFilterValue, scope.handleFilterConfirm)}
-                  onReset={() => onMagTableFilterFn('reset', filterProp, null, scope.handleFilterReset)}
+                  onConfirm={() => onTableFilterFn('confirm', filterProp, currentFilterValue, scope.handleFilterConfirm)}
+                  onReset={() => onTableFilterFn('reset', filterProp, null, scope.handleFilterReset)}
               >
                 <RangePicker
                     modelValue={dateRangeValue}
@@ -298,7 +298,7 @@ const MagTableCard = defineComponent({
                     }}
                     onClear={() => {
                       filterValues[filterProp] = null;
-                      onMagTableFilterFn('reset', filterProp, null, scope.handleFilterReset);
+                      onTableFilterFn('reset', filterProp, null, scope.handleFilterReset);
                     }}>
                 </RangePicker>
               </MagTableFilter>
@@ -389,8 +389,7 @@ const MagTableCard = defineComponent({
               rowKey={props.rowKey}
               bordered={{headerCell: true}}
               scroll={{
-                x: 'auto',
-                y: calcTableHeight()
+                // y: calcTableHeight()
               }}
               pagination={false}
               loading={loadingStatus.value}

@@ -1,6 +1,6 @@
 <template>
-  <a-layout class="layout-demo">
-    <a-layout-sider collapsible breakpoint="xl">
+  <a-layout class="main-layout">
+    <a-layout-sider breakpoint="xl" collapsible>
       <div class="logo"/>
       <a-menu
           :default-open-keys="['1']"
@@ -53,6 +53,7 @@
 
 <script lang="ts" setup>
 import {computed, ref} from 'vue';
+import {IconCaretLeft, IconCaretRight, IconHome} from '@arco-design/web-vue/es/icon';
 import routes from '@/routes'
 import router from "@/router";
 
@@ -70,29 +71,30 @@ const onClickMenuItem = (index: string) => {
 </script>
 
 <style scoped>
-.layout-demo {
+.main-layout {
   height: 1320px;
   background: var(--color-fill-2);
   border: 1px solid var(--color-border);
+  overflow: hidden;
 }
 
-.layout-demo :deep(.arco-layout-sider) .logo {
+.main-layout :deep(.arco-layout-sider) .logo {
   height: 32px;
   margin: 12px 8px;
   background: rgba(255, 255, 255, 0.2);
 }
 
-.layout-demo :deep(.arco-layout-sider-light) .logo {
+.main-layout :deep(.arco-layout-sider-light) .logo {
   background: var(--color-fill-2);
 }
 
-.layout-demo :deep(.arco-layout-header) {
+.main-layout :deep(.arco-layout-header) {
   height: 64px;
   line-height: 64px;
   background: var(--color-bg-3);
 }
 
-.layout-demo :deep(.arco-layout-footer) {
+.main-layout :deep(.arco-layout-footer) {
   height: 48px;
   color: var(--color-text-2);
   font-weight: 400;
@@ -100,15 +102,15 @@ const onClickMenuItem = (index: string) => {
   line-height: 48px;
 }
 
-.layout-demo :deep(.arco-layout-content) {
+.main-layout :deep(.arco-layout-content) {
   color: var(--color-text-2);
   font-weight: 400;
   font-size: 14px;
   background: var(--color-bg-3);
 }
 
-.layout-demo :deep(.arco-layout-footer),
-.layout-demo :deep(.arco-layout-content) {
+.main-layout :deep(.arco-layout-footer),
+.main-layout :deep(.arco-layout-content) {
   display: flex;
   flex-direction: column;
   color: var(--color-black);
@@ -123,5 +125,6 @@ const onClickMenuItem = (index: string) => {
   flex: 1;
   width: 100%;
   height: 100%;
+  box-sizing: border-box;
 }
 </style>

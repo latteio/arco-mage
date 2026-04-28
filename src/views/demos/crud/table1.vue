@@ -129,7 +129,7 @@ const visible = ref(false)
 const activeRow = ref(null);
 
 const addRow = (record: any) => {
-
+  visible.value = true;
 }
 
 const delRow = (record: any) => {
